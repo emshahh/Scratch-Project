@@ -24,7 +24,20 @@ commentController.getAllComments = async (req, res, next) => {
     
 };
 
-
+commentController.deleteComment = async (req, res, next) => {
+    const queryString = 'something'//DELETE COMMENT FROM TABLE THAT MATCHES ID IN REQ.PARAMS
+    const { id } = req.params;
+    db.query(queryString, [id], (err, result) => {
+        if(err){
+            return next({
+                log: `commentController.getAllComments: ERROR: ${err}`,
+                message: { err: 'Error occured in commentController.getAllComments. Check server log for more detail'}
+            })
+        } 
+        res.locals.comment = 'Deleted';
+        return next();
+    })
+}
 
 
 commentController.postComment = async (req, res, next) => {

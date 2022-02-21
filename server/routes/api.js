@@ -49,6 +49,20 @@ router.get('/comments',
     }
 )
 
+router.delete('/deleteComment/:id',
+    commentController.deleteComment,
+    (req, res) => {
+        res.status(200).json(res.locals.comment)
+    }
+)
+
+//SET UP FOR USER EDITING THEIR COMMENTS
+// NOTE: need to set up pin middleware that returns a comment when pin is clicked
+// NOTE: need to set up a button component that updates component
+router.put('/comments', commentController.getAllComments, commentController.editComment, commentController.postComment), (req, res) => {
+    res.status(200).json(res.locals.comment)
+}
+
 
 // router.post('/pins',
 //     pinController.postPin,

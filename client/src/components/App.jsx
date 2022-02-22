@@ -43,19 +43,19 @@ class App extends React.Component {
     }
 
     async onMarkerClick(data){
-        const lat = data.latLng.lat();
-        const lng = data.latLng.lng();
-        try{
-            const resDB = await axios.get(`http://localhost:3000/api/filteredcomments/${lat}/${lng}`);
-            const arrOfFilteredComments = [];
-            for( let i = 0; i < resDB.data.length; i++){
-                arrOfFilteredComments.push(resDB.data[i]);
-            }
-            this.setState({comments:[...arrOfFilteredComments]});
+        // const lat = data.latLng.lat();
+        // const lng = data.latLng.lng();
+        // try{
+        //     const resDB = await axios.get(`http://localhost:3000/api/filteredcomments/${lat}/${lng}`);
+        //     const arrOfFilteredComments = [];
+        //     for( let i = 0; i < resDB.data.length; i++){
+        //         arrOfFilteredComments.push(resDB.data[i]);
+        //     }
+        //     this.setState({comments:[...arrOfFilteredComments]});
             
-        }catch(err){
-            console.log('Error in get filtered pins : ' + err);
-        }
+        // }catch(err){
+        //     console.log('Error in get filtered pins : ' + err);
+        // }
     }
 
     handleLoggedIn() {
